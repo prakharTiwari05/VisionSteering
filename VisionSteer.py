@@ -4,12 +4,16 @@ import HandTrackingModule as htm
 import math
 import pynput.mouse as ms
 import pynput.keyboard as kb
+import ctypes
+
+user32 = ctypes.windll.user32
+
 
 mouse = ms.Controller()
 keyboard = kb.Controller()
 
-screenWidth = 1920
-screenHeight = 1080
+screenWidth = user32.GetSystemMetrics(0)
+screenHeight = user32.GetSystemMetrics(1)
 widthCam, heightCam = 300, 300
 centerX = screenWidth//2
 yCenter = screenHeight//2
