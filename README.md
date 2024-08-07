@@ -1,5 +1,8 @@
 # VisionSteer
 
+<img src="https://github.com/user-attachments/assets/57733174-98c5-4020-a588-f137a8ce0a21" width="400" />
+
+
 Control your car/vehicle in a game/simulator with a simple steering gesture using your hands or a dinner plate. No need to purchase a physical wheel when you can already imagine yourself in the driver seat!
 
 ## Installation
