@@ -4,6 +4,7 @@
 
 
 Control your car/vehicle in a game/simulator with a simple steering gesture using your hands or a dinner plate. No need to purchase a physical wheel when you can already imagine yourself in the driver seat!
+Demo video at bottom
 
 ## Installation
 
