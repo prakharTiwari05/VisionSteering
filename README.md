@@ -1,74 +1,148 @@
-# VisionSteer
+# VisionSteer v2
 
 <img src="https://github.com/user-attachments/assets/57733174-98c5-4020-a588-f137a8ce0a21" width="400" />
 
+**Control your car/vehicle in a game or simulator using simple hand gestures — now with ultra-low latency steering and full vJoy integration!**  
+No physical wheel needed; just your hands (or a plate for more realism) and a webcam.
 
-Control your car/vehicle in a game/simulator with a simple steering gesture using your hands or a dinner plate. No need to purchase a physical wheel when you can already imagine yourself in the driver seat!
+---
 
-**Demo video at bottom**
+## Features
 
-## Installation
+- vJoy integration for **direct steering wheel input** (X, Y, Z axes)  
+- Ultra-low latency steering for **accurate and smooth control**  
+- Hand gesture recognition using **Mediapipe Hands**  
+- Separate thread for hand detection to maximize FPS  
+- Gesture-based throttle and brake detection  
+- Optional debug camera feed for troubleshooting  
 
-To run the script, Python version 3.12 or higher is required. To install Python, visit the official Python downloads page by [Clicking Here](https://www.python.org/downloads/). **Make sure to add Python as a Path/environment variable during installation when prompted** 
+---
 
-To check if the installation is successful, type "python" in command prompt. 
+## What’s New in Version 2
 
-Once Python installation is completed, download the zip file of VisionSteer through Github. Once the download is completed, make sure to extract/unzip the downloaded folder. __Only the unzipped folder is used for the next steps__ 
+- **vJoy Integration**: Replaces mouse steering for minimal latency and precise control  
+- **Improved Gesture Processing**: Smoothed steering and analog throttle/brake control  
+- **Threaded Hand Detection**: Runs on a separate thread for higher performance  
+- **Configurable Deadzones**: Avoid accidental inputs for throttle and brake  
 
-Running the script requires some necessary packages to be installed into the device. The packages include Mediapipe, OpenCV, and Pynput. A requirements.txt file is included in the repository that allows you to directly install the necessary packages via a command line prompt. 
+---
 
+## Requirements
 
-Open command prompt and traverse to the proper directory where the python script "VisionSteer.py" is located after installing the zip package. For example, after installing from Github, the "VisionSteer.py" file is located in: 
+- Python **3.12 or higher**  
+- [vJoy Virtual Joystick](http://vjoystick.sourceforge.net/site/)  
+- Python packages from `requirements.txt` (Mediapipe, OpenCV, pyvjoy)  
+- Webcam  
 
+---
 
-**ALL OF THE FOLLOWING COMMANDS MUST BE RUN WITHIN THE SAME DIRECTORY**:
-```bash
-C:\Users\prakh\Downloads\VisionSteering-main\VisionSteering-main
+## Full Setup & Installation
+
+### 1. Install Python
+
+1. Download Python 3.12+ from the official [Python Downloads](https://www.python.org/downloads/) page.  
+2. During installation, **check “Add Python to PATH”**.  
+3. Verify installation:
+
+```cmd
+python --version
 ```
 
-Once you have entered the correct directory of where "VisionSteer.py" is located, you must install the correct packages using the "requirements.txt" file in the same directory. Simply run the following command in the command line terminal.
+# VisionSteer v2
+
+VisionSteer v2 allows you to control racing games like Assetto Corsa using hand gestures and vJoy virtual joystick.
+
+---
+
+## 1. Install vJoy
+
+1. Download and install **vJoy** from [vjoystick.sourceforge.net](https://sourceforge.net/projects/vjoystick/).  
+2. Open **vJoy Device Configuration** and ensure at least 3 axes are enabled:
+   - X-axis (Steering)
+   - Y-axis (Throttle)
+   - Z-axis (Brake)  
+3. Leave axis ranges as default: **0–32768**.  
+4. Optional: Calibrate axes in your game for full motion accuracy.  
+5. Test using **vJoy Monitor** — axes should respond to hand gestures in real time.
+
+---
+
+## 2. Install VisionSteer v2
+
+1. Download and unzip the **VisionSteer v2** repository from GitHub.  
+2. Open Command Prompt and navigate to the folder containing `VisionSteer.py`:
+
 ```bash
+cd C:\Users\YourUser\Downloads\VisionSteer-v2
+```
+
+Install required Python packages:
+
+```cmd
 pip install -r requirements.txt
 ```
-After installation is completed, you will be informed that Mediapipe, OpenCV, and Pynput have been installed onto the device directory. 
 
-**Installation is complete**. To begin, simply run the python script "VisionSteer.py" using the command line terminal with the following command:
-```bash
-python VisionSteer.py
-```
+## 3. vJoy Axes Mapping
+   vJoy Axis	Gesture	Description
+   X-axis (HID_USAGE_X)	Steering	Left/right hand rotation gesture
+   Y-axis (HID_USAGE_Y)	Throttle	Right thumb lift distance
+   Z-axis (HID_USAGE_Z)	Brake	Left thumb lift distance
 
-After a few seconds, a window will popup showing your camera. 
+## 4. In-Game Axis Mapping (Assetto Corsa)
 
-## Usage
-**VisionSteer REQUIRES a Camera**
+   Open Assetto Corsa → Controls → Steering Wheel.
+   
+   Map axes as follows:
+   
+   In-Game Axis	vJoy Axis
+   Steering	X-axis
+   Throttle	Y-axis
+   Brake	Z-axis
+   
+   Set Steering Wheel Limit → 180° for realistic, smooth control.
 
-It is suggested that VisionSteer is primarily used with Assetto Corsa using Content Manager. To download Assetto Corsa, [Click Here](https://store.steampowered.com/app/244210/Assetto_Corsa/)
+## 5. Usage
 
-VisionSteer requires the use of mouse steering in Assetto Corsa (or any other game compatible with such). In Assetto Corsa, it is suggested to use the following settings under Controls of Content Manager for the smoothest experience. Throttle and Brakes must be set to "W" and "S"
-
-
-![image](https://github.com/user-attachments/assets/a5bc52fe-dbe0-4efd-9a37-bb69285bf16e)
-
-Forced Throttle is not necessary. 
-
-It is also important that the Steering Wheel Limit is set to 180 degrees for the most realistic and smoothest experience. To do so, click the "View and UI" tab in Content Manager under Assetto Corsa and set "Steering wheel limit" to 180 degrees. 
-
-![image](https://github.com/user-attachments/assets/bfe9c68d-e257-434c-b9d3-564e62509d3b)
-
-You are now ready to play. Simply launch your session in Assetto Corsa (or other compatible mouse steering games) and launch the script. 
-**To begin, it is suggested that the video game or program you wish to use VisionSteer with is already open.**
-
-### Steps for gesture detection
-1) Position your camera where your hands are fully visible and comfortable to place. A demonstration of an ideal camera position is as such: 
-
-   ![image](https://github.com/user-attachments/assets/1c06211a-4011-48c6-8d37-4bb391d38b60)
-2) **Steering**: Make a steering wheel gesture with both your fists closed. Center your gestured wheel so that it reflects in the video game. Turn your gestured wheel to the the right or left and the movement will be reflected by the car in the game.  
-3) **Accelerating**: To accelerate, lift your right thumb from your closed right fist. When the right thumb is lifted, the car will begin to accelerate. Simply close your thumb with the fist again to stop accelerating. 
-4) **Braking**: To brake, lift your left thumb from your closed left fist. When the left thumb is lifted, the car will begin to decelerate. Simply close your thumb with the fist again to stop braking. 
+   Launch your game first (Assetto Corsa recommended).
+   
+   Run VisionSteer:
+   
+   ```cmd
+   python VisionSteer.py
+   ```
 
 
-Below is video demo of how Vision Steer works and its proper usage. In this demo, a dinner plate is used for a more realistic experience with added weight, still with the use of your camera. 
+   Position your webcam so both hands are fully visible.
+   
+   Gesture Controls
+   Action	Gesture Description
+   Steering	Closed-fist wheel gesture with both hands, rotate left/right
+   Accelerating	Lift right thumb to accelerate; close to stop
+   Braking	Lift left thumb to brake; close to stop
 
-https://github.com/user-attachments/assets/87f96ef8-a0af-4d5b-8e81-cbbe4d2682d0
+## 6. Optional Debug Mode
 
- 
+   Enable debug mode in VisionSteer.py:
+   
+   DRAW_DEBUG = True
+   
+   
+   Shows live camera feed with detected hands.
+   
+   Press q to exit.
+
+## 7. Configuration Parameters
+
+   - **CAM_INDEX**: Index of your camera (0 is default)  
+   - **PROC_WIDTH, PROC_HEIGHT**: Frame size for processing  
+   - **TARGET_FPS**: Maximum frames per second  
+   - **MAX_HANDS**: Maximum number of hands to detect  
+   - **MODEL_COMPLEXITY**: Mediapipe hand detection model complexity  
+   - **SMOOTH_ALPHA**: Steering smoothing factor  
+   - **THROTTLE_DEADZONE / BRAKE_DEADZONE**: Minimum gesture distance to register input  
+   - **MIN_DIST_THROTTLE / MAX_DIST_THROTTLE**: Throttle gesture calibration  
+   - **MIN_DIST_BRAKE / MAX_DIST_BRAKE**: Brake gesture calibration  
+   - **DRAW_DEBUG**: Show camera feed for debug purposes  
+
+
+
